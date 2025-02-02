@@ -1,57 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visitekaartje</title>
+    <title>Medisch Visitekaartje - Willy Mersseman</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #e8f0f7;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
         }
         .card {
             background-color: white;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 350px;
-            padding: 20px;
-            text-align: center;
+            padding: 25px;
+            text-align: left;
         }
         .card img {
             border-radius: 50%;
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin: 0 auto 15px;
+            display: block;
         }
         .card h1 {
-            font-size: 22px;
-            color: #333;
-            margin: 10px 0;
+            font-size: 24px;
+            color: #2e4c6e;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .card .name-note {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
         }
         .card p {
             font-size: 16px;
-            color: #555;
+            color: #444;
+            margin: 8px 0;
+        }
+        .card p strong {
+            color: #2e4c6e;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        .contact-info p {
             margin: 5px 0;
+        }
+        .explanation {
+            font-size: 12px;
+            color: #888;
+            margin-top: -5px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .discreet {
+            font-size: 12px;
+            color: #777;
+            margin-top: -10px;
+        }
+        /* Tabs for language selection */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tabs button {
+            background-color: #2e4c6e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        .tabs button:hover {
+            background-color: #1d3557;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="card">
         <img src="opa%20Willy.jpg" alt="Foto van Willy Mersseman">
-        <h1>Willy (ook geschreven als Willie) Mersseman</h1>
-        <p>De Swaene (assistentiewoningen annex WoonZorgCentrum Sint-Bavo)</p>
-        <p>St.  Camillusstraat 36, appartement 009</p>  
-        <p>2610 Wilrijk</p>  
-        <p>België</p>
-        <p><strong>Medische toestand:</strong> Alzheimer patiënt</p>
-        <p><strong>Geboortedatum:</strong> 9 juni 1939</p>
+        <h1>Willy Mersseman</h1>
+        <p class="name-note">(ook geschreven als Willie)</p>
+        
+        <!-- Language Tabs -->
+        <div class="tabs">
+            <button onclick="showContent('nl')">Nederlands</button>
+            <button onclick="showContent('en')">English</button>
+        </div>
+
+        <!-- Dutch Content -->
+        <div id="nl" class="content active">
+            <p><strong>Medische toestand:</strong> Alzheimer patiënt</p>
+            <p><strong>Geboortedatum:</strong> 9 juni 1939</p>
+
+            <p><strong>Adres:</strong></p>
+            <p>De Swane</p>
+            <p class="discreet">assistentiewoningen annex WoonZorgCentrum Sint-Bavo</p>
+            <p>St. Camillusstraat 36, appartement 009</p>
+            <p>2610 Wilrijk, België</p>
+
+            <p><strong>Contactpersonen:</strong></p>
+            <p>Inge Mersseman (dochter): 0032 474 54 31 80</p>
+            <p>Bart Mersseman (zoon): 0032 473 99 54 60</p>
+            <p>Tim Mersseman (zoon): 0032 478 47 09 70</p>
+
+            <p><strong>Huisarts:</strong> Dr. Peter Janvier - Huisartsenpraktijk Ruggeveld</p>
+            <p><strong>Behandelende arts:</strong> Dr. Tobi Van den Bossche - UZA Neurologie</p>
+
+            <p><strong>Contact De Swane:</strong></p>
+            <p>Telefoon: 0032 3 870 73 00</p>
+        </div>
+
+        <!-- English Content -->
+        <div id="en" class="content">
+            <p><strong>Medical condition:</strong> Alzheimer's patient</p>
+            <p><strong>Date of birth:</strong> June 9, 1939</p>
+
+            <p><strong>Address:</strong></p>
+            <p>De Swane</p>
+            <p class="discreet">senior residences annex Sint-Bavo Care Center</p>
+            <p>St. Camillusstraat 36, apartment 009</p>
+            <p>2610 Wilrijk, Belgium</p>
+
+            <p><strong>Contact persons:</strong></p>
+            <p>Inge Mersseman (daughter): 0032 474 54 31 80</p>
+            <p>Bart Mersseman (son): 0032 473 99 54 60</p>
+            <p>Tim Mersseman (son): 0032 478 47 09 70</p>
+
+            <p><strong>GP:</strong> Dr. Peter Janvier - General Practice Ruggeveld</p>
+            <p><strong>Attending doctor:</strong> Dr. Tobi Van den Bossche - UZA Neurology</p>
+
+            <p><strong>Contact De Swane:</strong></p>
+            <p>Phone: 0032 3 870 73 00</p>
+        </div>
     </div>
+
+    <script>
+        // Function to show selected language content
+        function showContent(language) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(language).classList.add('active');
+        }
+    </script>
 </body>
 </html>
