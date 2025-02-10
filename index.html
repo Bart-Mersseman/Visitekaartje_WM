@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e8f0f7;
+            background: linear-gradient(to bottom, #e8f0f7, #cfd9e8);
             margin: 0;
             padding: 0;
             display: flex;
@@ -101,7 +101,6 @@
     <div class="card">
         <img src="opa%20Willy.jpg" alt="Foto van Willy Mersseman">
         <h1>Willy Mersseman</h1>
-        <p class="name-note">(ook geschreven als Willie)</p>
         
         <!-- Language Tabs -->
         <div class="tabs">
@@ -111,56 +110,52 @@
 
         <!-- Dutch Content -->
         <div id="nl" class="content active">
+            <p class="name-note">(ook geschreven als Willie)</p>
             <p><strong>Medische toestand:</strong> Alzheimer patiënt</p>
             <p><strong>Geboortedatum:</strong> 9 juni 1939</p>
-
             <p><strong>Adres:</strong></p>
             <p>De Swane</p>
             <p class="discreet">assistentiewoningen annex WoonZorgCentrum Sint-Bavo</p>
             <p>St. Camillusstraat 36, appartement 009</p>
             <p>2610 Wilrijk, België</p>
-
+            <p><strong>Contact De Swane:</strong></p>
+            <p>Telefoon: 0032 3 870 73 00</p>
+            <p>Mieke Hallein - Woonassistent</p>
+            <p>Telefoon: 0032 3 343 40 10 (223)</p>
             <p><strong>Contactpersonen:</strong></p>
             <p>Inge Mersseman (dochter): 0032 474 54 31 80</p>
             <p>Bart Mersseman (zoon): 0032 473 99 54 60</p>
             <p>Tim Mersseman (zoon): 0032 478 47 09 70</p>
-
             <p><strong>Huisarts:</strong> Dr. Peter Janvier - Huisartsenpraktijk Ruggeveld</p>
             <p><strong>Behandelende arts:</strong> Dr. Tobi Van den Bossche - UZA Neurologie</p>
-
-            <p><strong>Contact De Swane:</strong></p>
-            <p>Telefoon: 0032 3 870 73 00</p>
         </div>
 
         <!-- English Content -->
         <div id="en" class="content">
+            <p class="name-note">(also written as Willie)</p>
             <p><strong>Medical condition:</strong> Alzheimer's patient</p>
             <p><strong>Date of birth:</strong> June 9, 1939</p>
-
             <p><strong>Address:</strong></p>
             <p>De Swane</p>
             <p class="discreet">senior residences annex Sint-Bavo Care Center</p>
             <p>St. Camillusstraat 36, apartment 009</p>
             <p>2610 Wilrijk, Belgium</p>
-
+            <p><strong>Contact De Swane:</strong></p>
+            <p>Phone: 0032 3 870 73 00</p>
+            <p>Mieke Hallein - senior residences assistant</p>
+            <p>Phone: 0032 3 343 40 10 (223)</p>
             <p><strong>Contact persons:</strong></p>
             <p>Inge Mersseman (daughter): 0032 474 54 31 80</p>
             <p>Bart Mersseman (son): 0032 473 99 54 60</p>
             <p>Tim Mersseman (son): 0032 478 47 09 70</p>
-
             <p><strong>GP:</strong> Dr. Peter Janvier - General Practice Ruggeveld</p>
             <p><strong>Attending doctor:</strong> Dr. Tobi Van den Bossche - UZA Neurology</p>
-
-            <p><strong>Contact De Swane:</strong></p>
-            <p>Phone: 0032 3 870 73 00</p>
-        </div>
+       </div>
     </div>
 
     <script>
-        // Function to show selected language content
         function showContent(language) {
-            const contents = document.querySelectorAll('.content');
-            contents.forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
             document.getElementById(language).classList.add('active');
         }
     </script>
