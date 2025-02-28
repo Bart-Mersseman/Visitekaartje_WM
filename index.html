@@ -9,208 +9,495 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #e8f0f7, #cfd9e8);
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
+        
         .card {
             background-color: white;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 350px;
-            padding: 25px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
             text-align: left;
+            margin: 20px auto;
         }
-        .card img {
-            border-radius: 50%;
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile-image {
             width: 100px;
             height: 100px;
+            border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 15px;
-            display: block;
+            border: 3px solid #2e4c6e;
         }
+        
+        .profile-name {
+            margin-left: 20px;
+        }
+        
         .card h1 {
             font-size: 24px;
             color: #2e4c6e;
-            text-align: center;
-            margin-bottom: 5px;
+            margin: 0 0 5px 0;
         }
+        
         .card .name-note {
             font-size: 14px;
             color: #777;
-            text-align: center;
         }
+        
+        .card-section {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
         .card p {
             font-size: 16px;
             color: #444;
             margin: 8px 0;
+            line-height: 1.4;
         }
+        
         .card p strong {
             color: #2e4c6e;
+            font-weight: 600;
         }
-        .contact-info {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
+        
         .contact-info p {
             margin: 5px 0;
         }
-        .explanation {
-            font-size: 12px;
-            color: #888;
-            margin-top: -5px;
-            margin-bottom: 15px;
-            text-align: left;
-        }
+        
         .discreet {
             font-size: 12px;
             color: #777;
-            margin-top: -10px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            font-style: italic;
         }
+        
         /* Tabs for language selection */
         .tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
+        
         .tabs button {
             background-color: #2e4c6e;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             cursor: pointer;
             font-size: 16px;
             margin: 0 5px;
             border-radius: 5px;
+            transition: all 0.3s ease;
         }
+        
         .tabs button:hover {
             background-color: #1d3557;
+            transform: translateY(-2px);
         }
+        
+        .tabs button.active {
+            background-color: #1d3557;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
         .content {
             display: none;
         }
+        
         .content.active {
             display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .holiday-address {
+            background-color: #f8f8f8;
+            border-left: 4px solid #2e4c6e;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .emergency-contact {
+            font-weight: bold;
+            color: #c62828;
+        }
+        
+        .phone-number {
+            white-space: nowrap;
+        }
+        
+        .official-address {
+            background-color: #fff9e6;
+            border-left: 4px solid #f9a825;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* Styling for doctor info */
+        .doctor-info {
+            background-color: #f0f7ff;
+            border-left: 4px solid #4285f4;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .doctor-title {
+            font-size: 16px;
+            color: #2e4c6e;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .doctor-title .emoji {
+            margin-right: 8px;
+        }
+        
+        .doctor-details {
+            margin-left: 0px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .card {
+                box-shadow: none;
+                padding: 0;
+            }
+            .tabs {
+                display: none;
+            }
+            .content {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px;
+            }
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-name {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            .tabs button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <img src="opa%20Willy.jpg" alt="Foto van Willy Mersseman">
-        <h1>Willy Mersseman</h1>
+        <div class="profile-header">
+            <img class="profile-image" src="opa_Willy.jpg" alt="Foto van Willy Mersseman" onerror="this.src='https://via.placeholder.com/100x100?text=Willy'; this.onerror='';">
+            <div class="profile-name">
+                <h1>Willy Mersseman</h1>
+            </div>
+        </div>
         
         <!-- Language Tabs -->
         <div class="tabs">
-            <button onclick="showContent('nl')">Nederlands</button>
-            <button onclick="showContent('en')">English</button>
-            <button onclick="showContent('es')">Español</button>
+            <button id="nl-btn" onclick="showContent('nl')">Nederlands</button>
+            <button id="en-btn" onclick="showContent('en')">English</button>
+            <button id="es-btn" onclick="showContent('es')">Español</button>
         </div>
 
         <!-- Dutch Content -->
         <div id="nl" class="content active">
             <p class="name-note">(ook geschreven als Willie)</p>
-            <p><strong>Medische toestand:</strong> Alzheimer patiënt</p>
-            <p><strong>Geboortedatum:</strong> 9 juni 1939</p>
-            <p><strong>Vakantieadres in Spanje:</strong></p>
-            <p>Van 2 t/m 8 maart 2025</p>
-            <p>ESTIMAR Marina Farnals</p>
-            <p>Kamer 412</p>
-            <p>Avinguda La mar 1</p>
-            <p>46137 La Pobla de Farnals</p>
-            <p>Valencia</p>
-            <p>Spanje</p>
-            <p>E-mail: recepcion5@estimarhotels.com</p>
-            <p>Telefoon: +34 960 66 62 20</p>
-            <p><strong>Adres:</strong></p>           
-            <p>De Swane</p>
-            <p class="discreet">assistentiewoningen annex WoonZorgCentrum Sint-Bavo</p>
-            <p>St. Camillusstraat 36, appartement 009</p>
-            <p>2610 Wilrijk, België</p>
-            <p><strong>Contact De Swane:</strong></p>
-            <p>Telefoon (24/7): 0032 3 870 73 00</p>
-            <p>Mieke Hallein - Woonassistent</p>
-            <p>Telefoon: 0032 3 343 40 10 (223)</p>
-            <p><strong>Contactpersonen:</strong></p>
-            <p>Inge Mersseman (dochter): 0032 474 54 31 80</p>
-            <p>Bart Mersseman (zoon): 0032 473 99 54 60</p>
-            <p>Tim Mersseman (zoon): 0032 478 47 09 70</p>
-            <p><strong>Huisarts:</strong> Dr. Peter Janvier - Huisartsenpraktijk Ruggeveld</p>
-            <p><strong>Behandelende arts:</strong> Dr. Tobi Van den Bossche - UZA Neurologie</p>
+            
+            <div class="card-section">
+                <p><strong>Medische toestand:</strong> Alzheimer patiënt</p>
+                <p><strong>Geboortedatum:</strong> 9 juni 1939</p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Contactpersonen:</strong></p>
+                <p>Inge Mersseman (dochter): <a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
+                <p>Bart Mersseman (zoon): <a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
+                <p>Tim Mersseman (zoon): <a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
+           </div>
+
+            <div class="card-section holiday-address">
+                <p><strong>Vakantieadres in Spanje:</strong></p>
+                <p>Van 2 t/m 8 maart 2025</p>
+                <p>ESTIMAR Marina Farnals</p>
+                <p>Kamer 412</p>
+                <p>Avinguda La mar 1</p>
+                <p>46137 La Pobla de Farnals</p>
+                <p>Valencia, Spanje</p>
+                <p><strong>E-mail:</strong> recepcion5@estimarhotels.com</p>
+                <p><strong>Telefoon:</strong> <span class="phone-number">+34 960 66 62 20</span></p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Huidige verblijfplaats:</strong></p>           
+                <p>De Swane</p>
+                <p class="discreet">assistentiewoningen annex WoonZorgCentrum Sint-Bavo</p>
+                <p>St. Camillusstraat 36, appartement 009</p>
+                <p>2610 Wilrijk, België</p>
+            </div>
+            
+            <div class="card-section official-address">
+                <p><strong>Officieel geregistreerd adres:</strong></p>
+                <p>Angelus Roncallilaan 7</p>
+                <p>2610 Antwerpen (Wilrijk), België</p>
+                <p class="discreet">Dit is het adres dat bij de overheid geregistreerd staat</p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Contact De Swane:</strong></p>
+                <p><span class="emergency-contact">Telefoon (24/7): <span class="phone-number">+32 3 870 73 00</span></span></p>
+                <p>Mieke Hallein - Woonassistent</p>
+                <p>Telefoon: <span class="phone-number">+32 3 343 40 10 (223)</span></p>
+            </div>
+            
+            <div class="card-section">
+                <div class="doctor-info">
+                    <div class="doctor-title"><strong>Huisarts: Dr. Peter Janvier</strong></div>
+                    <div class="doctor-details">
+                        <p>Huisartsenpraktijk Ruggeveld</p>
+                        <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, België</p>
+                        <p><span class="phone-number">+32 3 290 09 00</span></p>
+                    </div>
+                </div>
+                
+                <div class="doctor-info">
+                    <div class="doctor-title"><strong>Neuroloog: Dr. Tobi Van den Bossche</strong></div>
+                    <div class="doctor-details">
+                        <p>UZA Neurologie</p>
+                        <p>Drie Eikenstraat 655, 2650 Edegem, België</p>
+                        <p><span class="phone-number">+32 3 821 34 23</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- English Content -->
         <div id="en" class="content">
             <p class="name-note">(also written as Willie)</p>
-            <p><strong>Medical condition:</strong> Alzheimer's patient</p>
-            <p><strong>Date of birth:</strong> June 9, 1939</p>
-            <p><strong>Holiday address in Spain:</strong></p>
-            <p>From March 2 to March 8, 2025</p>
-            <p>ESTIMAR Marina Farnals</p>
-            <p>Room 412</p>
-            <p>Avinguda La mar 1</p>
-            <p>46137 La Pobla de Farnals</p>
-            <p>Valencia</p>
-            <p>Spain</p>
-            <p>E-mail: recepcion5@estimarhotels.com</p>
-            <p>Phone: +34 960 66 62 20</p>
-            <p><strong>Address:</strong></p>
-            <p>De Swane</p>
-            <p class="discreet">senior residences annex Sint-Bavo Care Center</p>
-            <p>St. Camillusstraat 36, apartment 009</p>
-            <p>2610 Wilrijk, Belgium</p>
-            <p><strong>Contact De Swane:</strong></p>
-            <p>Phone (24/7): 0032 3 870 73 00</p>
-            <p>Mieke Hallein - senior residences assistant</p>
-            <p>Phone: 0032 3 343 40 10 (223)</p>
-            <p><strong>Contact persons:</strong></p>
-            <p>Inge Mersseman (daughter): 0032 474 54 31 80</p>
-            <p>Bart Mersseman (son): 0032 473 99 54 60</p>
-            <p>Tim Mersseman (son): 0032 478 47 09 70</p>
-            <p><strong>GP:</strong> Dr. Peter Janvier - General Practice Ruggeveld</p>
-            <p><strong>Attending doctor:</strong> Dr. Tobi Van den Bossche - UZA Neurology</p>
+            
+            <div class="card-section">
+                <p><strong>Medical condition:</strong> Alzheimer's patient</p>
+                <p><strong>Date of birth:</strong> June 9, 1939</p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Contact person:</strong></p>
+                <p>Inge Mersseman (daughter): <a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
+                <p>Bart Mersseman (son): <a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
+                <p>Tim Mersseman (son): <a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
+           </div>
+
+           <div class="card-section holiday-address">
+                <p><strong>Holiday address in Spain:</strong></p>
+                <p>From March 2 to March 8, 2025</p>
+                <p>ESTIMAR Marina Farnals</p>
+                <p>Room 412</p>
+                <p>Avinguda La mar 1</p>
+                <p>46137 La Pobla de Farnals</p>
+                <p>Valencia, Spain</p>
+                <p><strong>E-mail:</strong> recepcion5@estimarhotels.com</p>
+                <p><strong>Phone:</strong> <span class="phone-number">+34 960 66 62 20</span></p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Current residence:</strong></p>
+                <p>De Swane</p>
+                <p class="discreet">senior residences annex Sint-Bavo Care Center</p>
+                <p>St. Camillusstraat 36, apartment 009</p>
+                <p>2610 Wilrijk, Belgium</p>
+            </div>
+            
+            <div class="card-section official-address">
+                <p><strong>Officially registered address:</strong></p>
+                <p>Angelus Roncallilaan 7</p>
+                <p>2610 Antwerp (Wilrijk), Belgium</p>
+                <p class="discreet">This is the address registered with government authorities</p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Contact De Swane:</strong></p>
+                <p><span class="emergency-contact">Phone (24/7): <span class="phone-number">+32 3 870 73 00</span></span></p>
+                <p>Mieke Hallein - senior residences assistant</p>
+                <p>Phone: <span class="phone-number">+32 3 343 40 10 (223)</span></p>
+            </div>
+            
+            <div class="card-section">
+                <div class="doctor-info">
+                    <div class="doctor-title"><strong>General Practitioner: Dr. Peter Janvier</strong></div>
+                    <div class="doctor-details">
+                        <p>General Practice Ruggeveld</p>
+                        <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, Belgium</p>
+                        <p><span class="phone-number">+32 3 290 09 00</span></p>
+                    </div>
+                </div>
+                
+                <div class="doctor-info">
+                    <div class="doctor-title"><strong>Neurologist: Dr. Tobi Van den Bossche</strong></div>
+                    <div class="doctor-details">
+                        <p>UZA Neurology</p>
+                        <p>Drie Eikenstraat 655, 2650 Edegem, Belgium</p>
+                        <p><span class="phone-number">+32 3 821 34 23</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Spanish Content -->
         <div id="es" class="content">
             <p class="name-note">(también escrito como Willie)</p>
-            <p><strong>Condición médica:</strong> Paciente con Alzheimer</p>
-            <p><strong>Fecha de nacimiento:</strong> 9 de junio de 1939</p>
-            <p><strong>Dirección de vacaciones en España:</strong></p>
-            <p>Del 2 al 8 de marzo de 2025</p>
-            <p>ESTIMAR Marina Farnals</p>
-            <p>Habitación 412</p>
-            <p>Avinguda La mar 1</p>
-            <p>46137 La Pobla de Farnals</p>
-            <p>Valencia</p>
-            <p>España</p>
-            <p>Correo electrónico: recepcion5@estimarhotels.com</p>
-            <p>Teléfono: +34 960 66 62 20</p>
-            <p><strong>Dirección:</strong></p>
-            <p>De Swane</p>
-            <p class="discreet">residencias para mayores anexo Centro de Cuidados Sint-Bavo</p>
-            <p>St. Camillusstraat 36, apartamento 009</p>
-            <p>2610 Wilrijk, Bélgica</p>
-            <p><strong>Contacto De Swane:</strong></p>
-            <p>Teléfono (24/7): 0032 3 870 73 00</p>
-            <p>Mieke Hallein - asistente de residencias</p>
-            <p>Teléfono: 0032 3 343 40 10 (223)</p>
-            <p><strong>Personas de contacto:</strong></p>
-            <p>Inge Mersseman (hija): 0032 474 54 31 80</p>
-            <p>Bart Mersseman (hijo): 0032 473 99 54 60</p>
-            <p>Tim Mersseman (hijo): 0032 478 47 09 70</p>
-            <p><strong>Médico de cabecera:</strong> Dr. Peter Janvier - Consultorio Médico Ruggeveld</p>
-            <p><strong>Médico tratante:</strong> Dr. Tobi Van den Bossche - UZA Neurología</p>
+            
+            <div class="card-section">
+                <p><strong>Condición médica:</strong> Paciente con Alzheimer</p>
+                <p><strong>Fecha de nacimiento:</strong> 9 de junio de 1939</p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Personas de contacto:</strong></p>
+                <p>Inge Mersseman (hija): <a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
+                <p>Bart Mersseman (hijo): <a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
+                <p>Tim Mersseman (hijo): <a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
+            </div>
+
+            <div class="card-section holiday-address">
+                <p><strong>Dirección de vacaciones en España:</strong></p>
+                <p>Del 2 al 8 de marzo de 2025</p>
+                <p>ESTIMAR Marina Farnals</p>
+                <p>Habitación 412</p>
+                <p>Avinguda La mar 1</p>
+                <p>46137 La Pobla de Farnals</p>
+                <p>Valencia, España</p>
+                <p><strong>Correo electrónico:</strong> recepcion5@estimarhotels.com</p>
+                <p><strong>Teléfono:</strong> <span class="phone-number">+34 960 66 62 20</span></p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Residencia actual:</strong></p>
+                <p>De Swane</p>
+                <p class="discreet">residencias para mayores anexo Centro de Cuidados Sint-Bavo</p>
+                <p>St. Camillusstraat 36, apartamento 009</p>
+                <p>2610 Wilrijk, Bélgica</p>
+            </div>
+            
+            <div class="card-section official-address">
+                <p><strong>Dirección oficialmente registrada:</strong></p>
+                <p>Angelus Roncallilaan 7</p>
+                <p>2610 Amberes (Wilrijk), Bélgica</p>
+                <p class="discreet">Esta es la dirección registrada en las autoridades gubernamentales</p>
+            </div>
+            
+            <div class="card-section">
+                <p><strong>Contacto De Swane:</strong></p>
+                <p><span class="emergency-contact">Teléfono (24/7): <span class="phone-number">+32 3 870 73 00</span></span></p>
+                <p>Mieke Hallein - asistente de residencias</p>
+                <p>Teléfono: <span class="phone-number">+32 3 343 40 10 (223)</span></p>
+            </div>
+            
+
+            
+            <div class="card-section">
+                <div class="doctor-info">
+                    <div class="doctor-title"><strong>Médico de cabecera: Dr. Peter Janvier</strong></div>
+                    <div class="doctor-details">
+                        <p>Consultorio Médico Ruggeveld</p>
+                        <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, Bélgica</p>
+                        <p><span class="phone-number">+32 3 290 09 00</span></p>
+                    </div>
+                </div>
+                
+                <div class="doctor-info">
+                    <div class="doctor-title"><strong>Neurólogo: Dr. Tobi Van den Bossche</strong></div>
+                    <div class="doctor-details">
+                        <p>UZA Neurología</p>
+                        <p>Drie Eikenstraat 655, 2650 Edegem, Bélgica</p>
+                        <p><span class="phone-number">+32 3 821 34 23</span></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
+        // Set active tab on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Detect browser language and show appropriate content
+            const userLang = navigator.language || navigator.userLanguage;
+            let defaultLang = 'nl'; // Default to Dutch
+            
+            if (userLang.startsWith('en')) {
+                defaultLang = 'en';
+            } else if (userLang.startsWith('es')) {
+                defaultLang = 'es';
+            }
+            
+            showContent(defaultLang);
+        });
+        
         function showContent(language) {
-            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            // Hide all content
+            document.querySelectorAll('.content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tabs button').forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected content
             document.getElementById(language).classList.add('active');
+            
+            // Add active class to selected button
+            document.getElementById(language + '-btn').classList.add('active');
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', language);
         }
+        
+        // Check for saved language preference
+        const savedLanguage = localStorage.getItem('preferredLanguage');
+        if (savedLanguage) {
+            showContent(savedLanguage);
+        }
+        
+        // Fix for image load issues
+        window.addEventListener('load', function() {
+            const profileImage = document.querySelector('.profile-image');
+            if (profileImage.naturalWidth === 0) {
+                profileImage.src = 'https://via.placeholder.com/100x100?text=Willy';
+            }
+        });
     </script>
 </body>
 </html>
