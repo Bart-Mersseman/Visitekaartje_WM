@@ -3,67 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medisch Visitekaartje - Willy Mersseman</title>
+    <title>Persoonlijke en Medisch Informatie - Willy Mersseman</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #e8f0f7, #cfd9e8);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #e8f0f7, #cfd9e8);
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        
+      .card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 450px;
+        padding: 30px;
+        text-align: left;
+        margin: 20px auto;
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #2e4c6e;
+        background-color: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        font-size: 12px;
+    }
+
+    .profile-name {
+        margin-left: 20px;
+    }
+        
+   .card h1 {
+        font-size: 24px;
+        color: #2e4c6e;
+        margin: 0 0 5px 0;
+    }
+
+    .card .name-note {
+        font-size: 14px;
+        color: #777;
+    }
+
+    .card-section {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    .medical-alert {
+        background-color: #ffe8e8;
+        border-left: 4px solid #d9534f;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .medical-alert-icon {
+        margin-right: 10px;
+        font-size: 24px;
+        color: #d9534f;
+    }
+
+        
+        .paramedic-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .medical-button {
+            display: inline-flex;
             align-items: center;
+            background-color: #2e4c6e;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin: 10px auto;
         }
         
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            max-width: 400px;
-            padding: 30px;
-            text-align: left;
-            margin: 20px auto;
+        .medical-button:hover {
+            background-color: #1d3557;
+            transform: translateY(-2px);
         }
         
-        .profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #2e4c6e;
-        }
-        
-        .profile-name {
-            margin-left: 20px;
-        }
-        
-        .card h1 {
-            font-size: 24px;
-            color: #2e4c6e;
-            margin: 0 0 5px 0;
-        }
-        
-        .card .name-note {
-            font-size: 14px;
-            color: #777;
-        }
-        
-        .card-section {
-            margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+        .medical-button img {
+            height: 24px;
+            margin-right: 10px;
         }
         
         .card p {
-            font-size: 16px;
+        	font-size: 16px;
             color: #444;
             margin: 8px 0;
             line-height: 1.4;
@@ -175,9 +227,97 @@
             margin-left: 0px;
         }
         
+        .medical-icon {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .medical-icon img {
+            height: 24px;
+            width: auto;
+        }
+        
+        .medical-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .medical-button:hover {
+            background-color: #c0392b;
+        }
+        
+        .medical-button img {
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .medical-info {
+            display: none;
+            background-color: #fff4f4;
+            border: 1px solid #ffcccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .medical-info.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: slideIn 0.4s ease;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: #555;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         
         @media print {
@@ -214,10 +354,122 @@
                 font-size: 14px;
             }
         }
+
+#medical-record, #medical-record-en, #medical-record-es {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #e8f0f7, #cfd9e8);
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1001;
+      display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+   .medical-record {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, #e8f0f7, #cfd9e8);
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 1001;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+   
+#medical-record .card, #medical-record-en .card, #medical-record-es .card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    text-align: left;
+    margin: 20px auto;
+}
+
+.medical-record h1, .medical-record-en h1, .medical-record-es h1 {
+    font-size: 24px;
+    color: #2e4c6e;
+    margin: 0 0 20px 0;
+    text-align: left;
+}
+
+.medical-record h2, .medical-record-en h2, .medical-record-es h2 {
+    font-size: 20px;
+    color: #2e4c6e;
+    margin: 20px 0 10px 0;
+}
+
+.medical-record ul, .medical-record-en ul, .medical-record-es ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+medical-record li, .medical-record-en li, .medical-record-es li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+medical-record p, .medical-record-en p, .medical-record-es p {
+    font-size: 16px;
+    color: #444;
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.back-to-main {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 24px;
+    background-color: #2e4c6e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.back-to-main:hover {
+    background-color: #1d3557;
+    transform: translateY(-2px);
+}
+
+.warning-text {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .medical-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+}
     </style>
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 </head>
 <body>
-    <div class="card">
+    <div class="card" id="main-card">
         <div class="profile-header">
             <img class="profile-image" src="opa%20Willy.jpg" alt="Foto van Willy Mersseman" onerror="this.src='https://via.placeholder.com/100x100?text=Willy'; this.onerror='';">
             <div class="profile-name">
@@ -239,37 +491,46 @@
             <div class="card-section">
                 <p><strong>Medische toestand:</strong> Alzheimer patiënt</p>
                 <p><strong>Geboortedatum:</strong> 9 juni 1939</p>
+                
+                <div class="paramedic-section">
+                    <button class="medical-button" onclick="showMedicalRecord('nl')">
+                        <img src="/api/placeholder/24/24" alt="Medisch symbool"> Medische informatie voor zorgverleners
+                    </button>
+                </div>          
             </div>
-            
-            <div class="card-section">
-                <p><strong>Contactpersonen:</strong></p>
-                <p>Inge Mersseman (dochter): <a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
-                <p>Bart Mersseman (zoon): <a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
-                <p>Tim Mersseman (zoon): <a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
-           </div>
+ <div class="card-section">
+    <p><strong>Contactpersonen:</strong></p>
+    <p> Inge Mersseman (dochter): <i class="fas fa-phone"></i><a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
+    <p> Bart Mersseman (zoon): <i class="fas fa-phone"></i><a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
+    <p> Tim Mersseman (zoon): <i class="fas fa-phone"></i><a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
+</div>
 
-            <div class="card-section holiday-address">
-                <p><strong>Vakantieadres in Spanje:</strong></p>
-                <p>Van 2 t/m 8 maart 2025</p>
-                <p>ESTIMAR Marina Farnals</p>
-                <p>Kamer 412</p>
-                <p>Avinguda La mar 1</p>
-                <p>46137 La Pobla de Farnals</p>
-                <p>Valencia, Spanje</p>
-                <p>recepcion5@estimarhotels.com</p>
-                <p> <span class="phone-number">+34 960 66 62 20</span></p>
-            </div>
+<div class="card-section holiday-address">
+    <p><strong>Vakantieadres in Spanje:</strong></p>
+    <p>Van 2 t/m 8 maart 2025</p>
+    <p>ESTIMAR Marina Farnals</p>
+    <p>Kamer 412</p>
+    <p>Avinguda La mar 1</p>
+    <p>46137 La Pobla de Farnals</p>
+    <p>Valencia, Spanje</p>
+    <p><i class="fas fa-phone"></i> <span class="phone-number">+34 960 66 62 20</span></p>
+</div>
+
+
+
+
+          
             
-            <div class="card-section">
-                <p><strong>Huidige verblijfplaats:</strong></p>           
-                <p>De Swane</p>
-                <p class="discreet">assistentiewoningen annex WoonZorgCentrum Sint-Bavo</p>
-                <p>St. Camillusstraat 36, appartement 009</p>
-                <p>2610 Wilrijk, België</p>
-                <p><span class="emergency-contact">Noodtelefoon (24/7): <a href="tel:+3238707300" id="emergency-contact"><span class="phone-number">+32 3 870 73 00</span></a></span></p>
-                <p>Mieke Hallein - Woonassistent</p>
-                <p><span class="phone-number">+32 3 343 40 10 (223)</span></p>
-            </div>            
+<div class="card-section">
+    <p><strong>Huidige verblijfplaats:</strong></p>
+    <p>De Swane</p>
+    <p class="discreet">assistentiewoningen annex WoonZorgCentrum Sint-Bavo</p>
+    <p>St. Camillusstraat 36, appartement 009</p>
+    <p>2610 Wilrijk, België</p>
+    <p><span class="emergency-contact">Noodtelefoon (24/7): <i class="fas fa-phone"></i><a href="tel:+3238707300" id="emergency-contact"> <span class="phone-number">+32 3 870 73 00</span></a></span></p>
+    <p>Mieke Hallein - Woonassistent</p>
+    <p><i class="fas fa-phone"></i> <span class="phone-number">+32 3 343 40 10 (223)</span></p>
+</div>           
             <div class="card-section official-address">
                 <p><strong>Officieel geregistreerd adres:</strong></p>
                 <p>Angelus Roncallilaan 7</p>
@@ -277,25 +538,25 @@
                 <p class="discreet">Dit is het adres dat bij de overheid geregistreerd staat</p>
             </div>
             
-            <div class="card-section">
-                <div class="doctor-info">
-                    <div class="doctor-title"><strong>Huisarts: Dr. Peter Janvier</strong></div>
-                    <div class="doctor-details">
-                        <p>Huisartsenpraktijk Ruggeveld</p>
-                        <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, België</p>
-                        <p><span class="phone-number">+32 3 290 09 00</span></p>
-                    </div>
-                </div>
-                
-                <div class="doctor-info">
-                    <div class="doctor-title"><strong>Neuroloog: Dr. Tobi Van den Bossche</strong></div>
-                    <div class="doctor-details">
-                        <p>UZA Neurologie</p>
-                        <p>Drie Eikenstraat 655, 2650 Edegem, België</p>
-                        <p><span class="phone-number">+32 3 821 34 23</span></p>
-                    </div>
-                </div>
-            </div>
+<div class="card-section">
+    <div class="doctor-info">
+        <div class="doctor-title"><strong>Huisarts: Dr. Peter Janvier</strong></div>
+        <div class="doctor-details">
+            <p>Huisartsenpraktijk Ruggeveld</p>
+            <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, België</p>
+            <p><i class="fas fa-phone"></i> <span class="phone-number">+32 3 290 09 00</span></p>
+        </div>
+    </div>
+
+    <div class="doctor-info">
+        <div class="doctor-title"><strong>Neuroloog: Dr. Tobi Van den Bossche</strong></div>
+        <div class="doctor-details">
+            <p>UZA Neurologie</p>
+            <p>Drie Eikenstraat 655, 2650 Edegem, België</p>
+            <p><i class="fas fa-phone"></i> <span class="phone-number">+32 3 821 34 23</span></p>
+        </div>
+    </div>
+</div>
         </div>
 
         <!-- English Content -->
@@ -305,13 +566,19 @@
             <div class="card-section">
                 <p><strong>Medical condition:</strong> Alzheimer's patient</p>
                 <p><strong>Date of birth:</strong> June 9, 1939</p>
-            </div>
+                
+                <div class="paramedic-section">
+                    <button class="medical-button" onclick="showMedicalRecord('en')">
+                        <img src="/api/placeholder/24/24" alt="Medical symbol"> Medical information for healthcare providers
+                    </button>
+                </div> 
+            </div>  
             
             <div class="card-section">
                 <p><strong>Contact person:</strong></p>
-                <p>Inge Mersseman (daughter): <a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
-                <p>Bart Mersseman (son): <a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
-                <p>Tim Mersseman (son): <a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
+                <p>Inge Mersseman (daughter): <i class="fas fa-phone"></i><a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
+                <p>Bart Mersseman (son): <i class="fas fa-phone"></i><a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
+                <p>Tim Mersseman (son): <i class="fas fa-phone"></i><a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
            </div>
 
            <div class="card-section holiday-address">
@@ -322,8 +589,7 @@
                 <p>Avinguda La mar 1</p>
                 <p>46137 La Pobla de Farnals</p>
                 <p>Valencia, Spain</p>
-                <p>recepcion5@estimarhotels.com</p>
-                <p><span class="phone-number">+34 960 66 62 20</span></p>
+                <p><i class="fas fa-phone"></i><span class="phone-number">+34 960 66 62 20</span></p>
             </div>
             
             <div class="card-section">
@@ -332,9 +598,9 @@
                 <p class="discreet">senior residences annex Sint-Bavo Care Center</p>
                 <p>St. Camillusstraat 36, apartment 009</p>
                 <p>2610 Wilrijk, Belgium</p>
-                <p><span class="emergency-contact">Emergency phone (24/7): <a href="tel:+3238707300" id="emergency-contact"><span class="phone-number">+32 3 870 73 00</span></a></span></p>
+                <p><span class="emergency-contact">Emergency phone (24/7): <i class="fas fa-phone"></i><a href="tel:+3238707300" id="emergency-contact"><span class="phone-number">+32 3 870 73 00</span></a></span></p>
                 <p>Mieke Hallein - senior residences assistant</p>
-                <p><span class="phone-number">+32 3 343 40 10 (223)</span></p>
+                <p><i class="fas fa-phone"></i><span class="phone-number">+32 3 343 40 10 (223)</span></p>
             </div>            
             <div class="card-section official-address">
                 <p><strong>Officially registered address:</strong></p>
@@ -351,7 +617,7 @@
                     <div class="doctor-details">
                         <p>General Practice Ruggeveld</p>
                         <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, Belgium</p>
-                        <p><span class="phone-number">+32 3 290 09 00</span></p>
+                        <p><i class="fas fa-phone"></i><span class="phone-number">+32 3 290 09 00</span></p>
                     </div>
                 </div>
                 
@@ -360,7 +626,7 @@
                     <div class="doctor-details">
                         <p>UZA Neurology</p>
                         <p>Drie Eikenstraat 655, 2650 Edegem, Belgium</p>
-                        <p><span class="phone-number">+32 3 821 34 23</span></p>
+                        <p><i class="fas fa-phone"></i><span class="phone-number">+32 3 821 34 23</span></p>
                     </div>
                 </div>
             </div>
@@ -370,16 +636,22 @@
         <div id="es" class="content">
             <p class="name-note">(también escrito como Willie)</p>
             
-            <div class="card-section">
+             <div class="card-section">
                 <p><strong>Condición médica:</strong> Paciente con Alzheimer</p>
                 <p><strong>Fecha de nacimiento:</strong> 9 de junio de 1939</p>
+                
+                <div class="paramedic-section">
+                    <button class="medical-button" onclick="showMedicalRecord('es')">
+                        <img src="/api/placeholder/24/24" alt="Símbolo médico"> Información médica para profesionales sanitarios
+                    </button>
+                </div> 
             </div>
             
             <div class="card-section">
                 <p><strong>Personas de contacto:</strong></p>
-                <p>Inge Mersseman (hija): <a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
-                <p>Bart Mersseman (hijo): <a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
-                <p>Tim Mersseman (hijo): <a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
+                <p>Inge Mersseman (hija): <i class="fas fa-phone"></i><a href="tel:+32474543180" id="contactInge"><span class="phone-number">+32 474 54 31 80</span></a></p>
+                <p>Bart Mersseman (hijo): <i class="fas fa-phone"></i><a href="tel:+32473995460" id="contactBart"><span class="phone-number">+32 473 99 54 60</span></a></p>
+                <p>Tim Mersseman (hijo): <i class="fas fa-phone"></i><a href="tel:+32478470970" id="contactTim"><span class="phone-number">+32 478 47 09 70</span></a></p>
             </div>
 
             <div class="card-section holiday-address">
@@ -390,8 +662,7 @@
                 <p>Avinguda La mar 1</p>
                 <p>46137 La Pobla de Farnals</p>
                 <p>Valencia, España</p>
-                <p>recepcion5@estimarhotels.com</p>
-                <p><span class="phone-number">+34 960 66 62 20</span></p>
+                <p><i class="fas fa-phone"></i><span class="phone-number">+34 960 66 62 20</span></p>
             </div>
             
             <div class="card-section">
@@ -400,9 +671,9 @@
                 <p class="discreet">residencias para mayores anexo Centro de Cuidados Sint-Bavo</p>
                 <p>St. Camillusstraat 36, apartamento 009</p>
                 <p>2610 Wilrijk, Bélgica</p>
-                <p><span class="emergency-contact">Teléfono de emergencia(24/7): <a href="tel:+3238707300" id="emergency-contact"><span class="phone-number">+32 3 870 73 00</span></a></span></p>
+                <p><span class="emergency-contact">Teléfono de emergencia(24/7): <i class="fas fa-phone"></i><a href="tel:+3238707300" id="emergency-contact"><span class="phone-number">+32 3 870 73 00</span></a></span></p>
                 <p>Mieke Hallein - asistente de residencias</p>
-                <p><span class="phone-number">+32 3 343 40 10 (223)</span></p>
+                <p><i class="fas fa-phone"></i><span class="phone-number">+32 3 343 40 10 (223)</span></p>
             </div>
             
             <div class="card-section official-address">
@@ -419,7 +690,7 @@
                     <div class="doctor-details">
                         <p>Consultorio Médico Ruggeveld</p>
                         <p>August Van de Wielelei 81-83, 2100 Deurne-Noord, Bélgica</p>
-                        <p><span class="phone-number">+32 3 290 09 00</span></p>
+                        <p><i class="fas fa-phone"></i><span class="phone-number">+32 3 290 09 00</span></p>
                     </div>
                 </div>
                 
@@ -428,50 +699,290 @@
                     <div class="doctor-details">
                         <p>UZA Neurología</p>
                         <p>Drie Eikenstraat 655, 2650 Edegem, Bélgica</p>
-                        <p><span class="phone-number">+32 3 821 34 23</span></p>
+                        <p><i class="fas fa-phone"></i><span class="phone-number">+32 3 821 34 23</span></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+<!-- Medical Record Section -->
+
+    <div id="medical-record">
+        <h1>Medisch Dossier Willy Mersseman</h1>
+        <p><strong>Betreffende:</strong> Willy Mersseman (09-06-1939)</p>
+        <p><strong>Huisartsenpraktijk Ruggeveld</strong><br>
+        Deurne, 18-12-2024<br>
+        Dr. Sarah Daenen<br>
+        August Van de Wielelei 81-83<br>
+        2100 Deurne<br>
+        032900900<br>
+        1.05795.26.004</p>
+        
+        <h2>Actieve problemen</h2>
+        <ul>
+            <li>Mild cognitive impairement, 15-07-2021</li>
+            <li>Glaucoom, 25-02-2020</li>
+            <li>Sigmoïdale diverticulose, 17-02-2009</li>
+            <li>Resectie sigmoidpoliep</li>
+            <li>Verruca seborroica, 02-06-2021</li>
+            <li>Hyperthyroïdie, 05-12-2018</li>
+            <li>Vasculair parkinsonisme, 29-09-2023</li>
+            <li>Alzheimer-type dementie</li>
+            <li>Atrium fibrilleren</li>
+        </ul>
+
+        <h2>Voorgeschiedenis</h2>
+        <ul>
+            <li>Coronavirusinfectie: bewezen geval COVID19, 05-04-2022</li>
+            <li>Recidief VKF, 10-12-2018</li>
+            <li>Joodcontaminatie, 05-12-2018</li>
+            <li>Tendinopathie, 02-11-2017</li>
+            <li>Achillespees tendinopathie, 15-10-2013 (rechts)</li>
+            <li>Acute bronchitis, 02-10-2009</li>
+            <li>Sigmoidpoliep, 17-02-2009</li>
+            <li>Bursitis elleboog, 15-11-2004</li>
+            <li>Prostatectomie, 1999</li>
+        </ul>
+        
+        <h2>Intoleranties</h2>
+        <ul>
+            <li>Cordarone: hyperthyroïdie</li>
+        </ul>
+
+        <h2>Vaccinaties</h2>
+        <ul>
+            <li>Tetanus: 19-10-2017 (Ingepland op: 19-10-2027)</li>
+            <li>COVID-19: 23-11-2021, 08-06-2022, 02-11-2022, 25-10-2024</li>
+            <li>Influenza: 07-11-2020, 02-11-2021, 09-12-2022, 24-10-2023</li>
+            <li>Tedivax Pro Adulto, 1 spuitamp. 0,5 ml vaccin oplossing: 19-07-2007</li>
+            <li>Gele koorts: 08-08-2011</li>
+            <li>Difterie: 19-10-2017</li>
+            <li>Kinkhoest: 19-10-2017</li>
+            <li>Comimaty XBB 1.5 - Pfizer/BioNTech: 09-10-2023</li>
+            <li>INFLUVAC TETRA 0,5ML SPUITAMP 2023: 24-10-2023</li>
+        </ul>
+
+        <h2>Medicatie</h2>
+        <ul>
+            <li>Ramipril Sandoz 5 mg tabl. 98, 0.25 tabl. 1 x per dag</li>
+            <li>Pradaxa 110 mg harde caps. 180 (180 x 1) UD, 1 caps. 2 × per dag</li>
+            <li>Rosuvastatine EG 10 mg filmomh. tabl. 100, 1 tabl. 1 x per dag</li>
+            <li>Euthyrox 25 µg tabl. 84, 1 tabl. 1 x per dag</li>
+            <li>D-Cure 25 000 IE or. opl. amp. 12 x 1 ml, 1 amp. 1 x per maand</li>
+            <li>Lanoxin 250 0.25 mg tabl. 90, 1 tabl. 1 x per dag</li>
+            <li>Donepezil EG 10 mg filmomh. tabl. 98, 1 tabl. 1 x per dag</li>
+        </ul>
+
+        <p class="warning-text">ALTIJD op zak hebben<br>nooit afgeven wel kopie laten van maken</p>
+
+        <p><strong>Dr. Sarah Daenen</strong><br>Huisarts<br>1-05795-26-004</p>
+        
+        <button class="back-to-main" onclick="hideAndShowCard('nl')">Terug naar hoofdpagina</button>
+    </div>
+    
+    <div id="medical-record-en">
+        <h1>Medical Record Willy Mersseman</h1>
+        <p><strong>Regarding:</strong> Willy Mersseman (09-06-1939)</p>
+        <p><strong>General Practice Ruggeveld</strong><br>
+        Deurne, 18-12-2024<br>
+        Dr. Sarah Daenen<br>
+        August Van de Wielelei 81-83<br>
+        2100 Deurne<br>
+        032900900<br>
+        1.05795.26.004</p>
+
+        <h2>Active Problems</h2>
+        <ul>
+            <li>Mild cognitive impairment, 15-07-2021</li>
+            <li>Glaucoma, 25-02-2020</li>
+            <li>Sigmoidal diverticulosis, 17-02-2009</li>
+            <li>Resection sigmoid polyp</li>
+            <li>Verruca seborrheic, 02-06-2021</li>
+            <li>Hyperthyroidism, 05-12-2018</li>
+            <li>Vascular parkinsonism, 29-09-2023</li>
+            <li>Alzheimer-type dementia</li>
+            <li>Atrial fibrillation</li>
+        </ul>
+
+        <h2>Medical History</h2>
+        <ul>
+            <li>Coronavirus infection: proven case COVID19, 05-04-2022</li>
+            <li>Recurrence AF, 10-12-2018</li>
+            <li>Iodine contamination, 05-12-2018</li>
+            <li>Tendinopathy, 02-11-2017</li>
+            <li>Achilles tendon tendinopathy, 15-10-2013 (right)</li>
+            <li>Acute bronchitis, 02-10-2009</li>
+            <li>Sigmoid polyp, 17-02-2009</li>
+            <li>Elbow bursitis, 15-11-2004</li>
+            <li>Prostatectomy, 1999</li>
+        </ul>
+
+        <h2>Intolerances</h2>
+        <ul>
+            <li>Cordarone: hyperthyroidism</li>
+        </ul>
+
+        <h2>Vaccinations</h2>
+        <ul>
+            <li>Tetanus: 19-10-2017 (Scheduled on: 19-10-2027)</li>
+            <li>COVID-19: 23-11-2021, 08-06-2022, 02-11-2022, 25-10-2024</li>
+            <li>Influenza: 07-11-2020, 02-11-2021, 09-12-2022, 24-10-2023</li>
+            <li>Tedivax Pro Adulto, 1 syringe amp. 0.5 ml vaccine solution: 19-07-2007</li>
+            <li>Yellow fever: 08-08-2011</li>
+            <li>Diphtheria: 19-10-2017</li>
+            <li>Whooping cough: 19-10-2017</li>
+            <li>Comimaty XBB 1.5 - Pfizer/BioNTech: 09-10-2023</li>
+            <li>INFLUVAC TETRA 0.5ML SYRINGE AMP 2023: 24-10-2023</li>
+        </ul>
+
+        <h2>Medication</h2>
+        <ul>
+            <li>Ramipril Sandoz 5 mg tabl. 98, 0.25 tabl. 1 x per day</li>
+            <li>Pradaxa 110 mg hard caps. 180 (180 x 1) UD, 1 caps. 2 × per day</li>
+            <li>Rosuvastatin EG 10 mg film-coated tabl. 100, 1 tabl. 1 x per day</li>
+            <li>Euthyrox 25 µg tabl. 84, 1 tabl. 1 x per day</li>
+            <li>D-Cure 25,000 IU oral solution amp. 12 x 1 ml, 1 amp. 1 x per month</li>
+            <li>Lanoxin 250 0.25 mg tabl. 90, 1 tabl. 1 x per day</li>
+            <li>Donepezil EG 10 mg film-coated tabl. 98, 1 tabl. 1 x per day</li>
+        </ul>
+
+        <p class="warning-text">ALWAYS carry with you<br>never give away, but allow a copy to be made</p>
+
+        <p><strong>Dr. Sarah Daenen</strong><br>General Practitioner<br>1-05795-26-004</p>
+    <button class="back-to-main" onclick="hideAndShowCard('en')">Back to main page</button>
+</div>
+
+
+ <div id="medical-record-es">
+    <h1>Historial Médico Willy Mersseman</h1>
+    <p><strong>Referente a:</strong> Willy Mersseman (09-06-1939)</p>
+    <p><strong>Consultorio Médico Ruggeveld</strong><br>
+    Deurne, 18-12-2024<br>
+    Dra. Sarah Daenen<br>
+    August Van de Wielelei 81-83<br>
+    2100 Deurne<br>
+    032900900<br>
+    1.05795.26.004</p>
+
+    <h2>Problemas Activos</h2>
+    <ul>
+        <li>Deterioro cognitivo leve, 15-07-2021</li>
+        <li>Glaucoma, 25-02-2020</li>
+        <li>Diverticulosis sigmoidea, 17-02-2009</li>
+        <li>Resección de pólipo sigmoideo</li>
+        <li>Verruga seborreica, 02-06-2021</li>
+        <li>Hipertiroidismo, 05-12-2018</li>
+        <li>Parkinsonismo vascular, 29-09-2023</li>
+        <li>Demencia tipo Alzheimer</li>
+        <li>Fibrilación auricular</li>
+    </ul>
+
+    <h2>Historial Médico</h2>
+    <ul>
+        <li>Infección por coronavirus: caso probado de COVID19, 05-04-2022</li>
+        <li>Recurrencia de FA, 10-12-2018</li>
+        <li>Contaminación por yodo, 05-12-2018</li>
+        <li>Tendinopatía, 02-11-2017</li>
+        <li>Tendinopatía del tendón de Aquiles, 15-10-2013 (derecho)</li>
+        <li>Bronquitis aguda, 02-10-2009</li>
+        <li>Pólipo sigmoideo, 17-02-2009</li>
+        <li>Bursitis de codo, 15-11-2004</li>
+        <li>Prostatectomía, 1999</li>
+    </ul>
+
+    <h2>Intolerancias</h2>
+    <ul>
+        <li>Cordarona: hipertiroidismo</li>
+    </ul>
+
+    <h2>Vacunaciones</h2>
+    <ul>
+        <li>Tétanos: 19-10-2017 (Programado para: 19-10-2027)</li>
+        <li>COVID-19: 23-11-2021, 08-06-2022, 02-11-2022, 25-10-2024</li>
+        <li>Influenza: 07-11-2020, 02-11-2021, 09-12-2022, 24-10-2023</li>
+        <li>Tedivax Pro Adulto, 1 jeringa amp. solución de vacuna de 0,5 ml: 19-07-2007</li>
+        <li>Fiebre amarilla: 08-08-2011</li>
+        <li>Difteria: 19-10-2017</li>
+        <li>Tos ferina: 19-10-2017</li>
+        <li>Comimaty XBB 1.5 - Pfizer/BioNTech: 09-10-2023</li>
+        <li>INFLUVAC TETRA 0,5ML JERINGA AMP 2023: 24-10-2023</li>
+    </ul>
+
+    <h2>Medicamentos</h2>
+    <ul>
+        <li>Ramipril Sandoz 5 mg tabl. 98, 0.25 tabl. 1 vez al día</li>
+        <li>Pradaxa 110 mg caps. duras 180 (180 x 1) UD, 1 caps. 2 veces al día</li>
+        <li>Rosuvastatina EG 10 mg comp. recub. con película 100, 1 comp. 1 vez al día</li>
+        <li>Euthyrox 25 µg tabl. 84, 1 tabl. 1 vez al día</li>
+        <li>D-Cure 25,000 UI amp. de solución oral 12 x 1 ml, 1 amp. 1 vez al mes</li>
+        <li>Lanoxin 250 0.25 mg tabl. 90, 1 tabl. 1 vez al día</li>
+        <li>Donepezilo EG 10 mg comp. recub. con película 98, 1 comp. 1 vez al día</li>
+    </ul>
+
+    <p class="warning-text">LLEVAR SIEMPRE consigo<br>nunca entregar, pero permitir hacer una copia</p>
+
+    <p><strong>Dra. Sarah Daenen</strong><br>Médico de cabecera<br>1-05795-26-004</p>
+
+    <button class="back-to-main" onclick="hideAndShowCard('es')">Volver a la página principal</button>
+</div>
 
     <script>
         // Set active tab on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            // Detect browser language and show appropriate content
-            const userLang = navigator.language || navigator.userLanguage;
-            let defaultLang = 'nl'; // Default to Dutch
-            
-            if (userLang.startsWith('en')) {
-                defaultLang = 'en';
-            } else if (userLang.startsWith('es')) {
-                defaultLang = 'es';
-            }
-            
-            showContent(defaultLang);
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    // Detect browser language and show appropriate content
+    const userLang = (navigator.language || navigator.userLanguage).substring(0, 2); // Normalize to first 2 letters
+    let defaultLang = 'nl'; // Default to Dutch
+
+    if (userLang === 'en') {
+        defaultLang = 'en';
+    } else if (userLang === 'es') {
+        defaultLang = 'es';
+    } else {
+        console.log('Language not recognized, defaulting to Dutch.');
+    }
+
+    showContent(defaultLang);
+});
         
-        function showContent(language) {
-            // Hide all content
-            document.querySelectorAll('.content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.tabs button').forEach(button => {
-                button.classList.remove('active');
-            });
-            
-            // Show selected content
-            document.getElementById(language).classList.add('active');
-            
-            // Add active class to selected button
-            document.getElementById(language + '-btn').classList.add('active');
-            
-            // Save language preference
-            localStorage.setItem('preferredLanguage', language);
-        }
+        function showMedicalRecord(language) {
+    document.getElementById('main-card').style.display = 'none';
+
+    // Verberg alle medische dossiers
+    document.getElementById('medical-record').style.display = 'none';
+    document.getElementById('medical-record-en').style.display = 'none';
+    document.getElementById('medical-record-es').style.display = 'none';
+
+    // Toon het juiste medische dossier
+    if (language === 'en') {
+        document.getElementById('medical-record-en').style.display = 'block';
+    } else if (language === 'es') {
+        document.getElementById('medical-record-es').style.display = 'block';
+    } else {
+        document.getElementById('medical-record').style.display = 'block';
+    }
+}
+
+function hideAndShowCard(language) {
+    document.getElementById('medical-record').style.display = 'none';
+    document.getElementById('medical-record-en').style.display = 'none';
+    document.getElementById('medical-record-es').style.display = 'none';
+    document.getElementById('main-card').style.display = 'block';
+}
+
+function showContent(language) {
+    // Verberg alle content divs
+    var contents = document.getElementsByClassName('content');
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+    }
+
+    // Toon de juiste content div
+    document.getElementById(language).classList.add('active');
+}
         
+        
+      
+
         // Check for saved language preference
         const savedLanguage = localStorage.getItem('preferredLanguage');
         if (savedLanguage) {
