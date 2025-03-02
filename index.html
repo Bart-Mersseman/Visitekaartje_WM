@@ -320,21 +320,35 @@
             to { transform: translateY(0); opacity: 1; }
         }
         
-        @media print {
-            body {
-                background: white;
-                padding: 0;
-            }
-            .card {
-                box-shadow: none;
-                padding: 0;
-            }
-            .tabs {
-                display: none;
-            }
-            .content {
-                display: block;
-            }
+@media (max-width: 480px) {
+    .card {
+        padding: 20px;
+    }
+
+    #es .profile-header { /* Specifieke aanpassing voor Spaans */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #es .profile-name { /* Specifieke aanpassing voor Spaans */
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .profile-header { /* Algemene aanpassing, indien nodig */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-name { /* Algemene aanpassing, indien nodig */
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .tabs button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
         }
         
   
